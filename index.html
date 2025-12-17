@@ -1,553 +1,549 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifest Mailbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h2 {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid #1a1a1a;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .cta-button:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .cta-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-tagline {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e5e5e5;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .manifest-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e5e5e5;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .form-section {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .waitlist-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .full-width-button {
+            width: 100%;
+        }
+
+        .how-it-works {
+            padding: 8rem 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 5rem;
+            color: #1a1a1a;
+        }
+
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 4rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 200;
+            color: #e5e5e5;
+            min-width: 80px;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: #666;
+            font-weight: 300;
+        }
+
+        .preview {
+            padding: 8rem 2rem;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .inbox-preview {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #e5e5e5;
+        }
+
+        .inbox-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            font-weight: 400;
+        }
+
+        .email-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            transition: background 0.2s;
+        }
+
+        .email-item:hover {
+            background: #fafafa;
+        }
+
+        .email-from {
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .email-subject {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .email-preview {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .science {
+            padding: 8rem 2rem;
+            border-bottom: 1px solid #e5e5e5;
+            background: #fafafa;
+        }
+
+        .science-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .science-intro {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #1a1a1a;
+            margin-bottom: 4rem;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .science-item h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .science-item p {
+            color: #666;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .features {
+            padding: 8rem 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .features-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature p {
+            color: #666;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .step-number {
+                min-width: auto;
+            }
+
+            .how-it-works,
+            .preview,
+            .features,
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Manifest Mailbox&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.02em;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.how-it-works {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.steps {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: start;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-number {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 200;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-width: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-content h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.step-content p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.preview {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.inbox-preview {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 700px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.inbox-header {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-item {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: background 0.2s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-item:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-from {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-subject {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-preview {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.features {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science-intro {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science-item h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.science-item p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.features-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.feature h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.feature p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-section h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-section p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-input {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.manifest-input {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resize: vertical;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-label {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.waitlist-form {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.full-width-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 3rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #999;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero h2 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.step {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.step-number {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>min-width: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.how-it-works,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.preview,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.features,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.cta-section {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 4rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.features-grid {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Manifest Mailbox&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Open your inbox each morning to emails from your future. Written from the reality you're calling in.&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="cta-button" onclick="scrollToWaitlist()"&gt;Join the Waitlist&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="how-it-works"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;How it works&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="steps"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number"&gt;01&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Describe what you're manifesting&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Share your vision in your own words. Add specific details like timeframes, amounts, or feelings you want to experience.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number"&gt;02&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Receive daily emails from your future&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Each morning, open your inbox to 3-7 personalized messages. Written as if they're already happening.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-number"&gt;03&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="step-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Read, refine, and return tomorrow&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Mark what feels right. Adjust what doesn't. Your manifestation evolves with you.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;Your inbox, reimagined&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="inbox-preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="inbox-header"&gt;Today&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="email-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-from"&gt;Future You&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-subject"&gt;Re: The book deal is signed&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-preview"&gt;I wanted to share the news - the publishing contract came through. The advance was more than we hoped...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="email-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-from"&gt;Your Agent&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-subject"&gt;Speaking engagement confirmed&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-preview"&gt;The keynote is locked in for March. They're excited to have you. Let me know about travel...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="email-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-from"&gt;Your Business Bank&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-subject"&gt;Account summary - January&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-preview"&gt;Your current balance reflects the consulting revenue from last month. Q1 is looking strong...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="email-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-from"&gt;Health Coach&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-subject"&gt;Your body is thanking you&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="email-preview"&gt;The consistency is paying off. Your energy levels, your sleep, the way your clothes fit...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="science"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;The science of visualization&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="science-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="science-intro"&gt;Research shows that mental rehearsal activates the same neural pathways as actual experience. When you vividly imagine your future, your brain begins to treat it as real.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="science-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="science-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Mental rehearsal works&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Studies demonstrate that athletes who visualize their performance show similar brain activity to those physically practicing. Your mind doesn't distinguish between vivid imagination and reality.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="science-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Consistency creates pathways&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Daily visualization strengthens neural connections. The more you rehearse your future mentally, the more your brain recognizes it as familiar and achievable.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="science-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Detailed imagery matters&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Research shows specific, sensory-rich visualization is more effective than vague daydreaming. The more detail you imagine, the stronger the neurological impact.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="features"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;Designed for daily ritual&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="features-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="feature"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Minimal by design&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;No distractions. No gamification. Just a calm, clean space to receive your daily messages.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="feature"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Personalized content&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Every email is generated based on your specific manifestation. Your goals, your timeline, your reality.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="feature"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Evolves with you&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Refine your manifestation anytime. The emails adjust to reflect where you are now.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="feature"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Daily reminder&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;A gentle notification each morning. Your inbox is ready when you are.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="cta-section" id="waitlist"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Start manifesting differently&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Join the waitlist and set up your manifestation profile. You'll be first to know when we launch.&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;form class="waitlist-form" id="waitlistForm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>type="email"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>id="email"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Your email"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="email-input"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>required</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>id="manifestation"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>placeholder="What are you manifesting? Describe your vision in detail..."<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="manifest-input"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>rows="4"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>required</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;&lt;/textarea&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>type="text"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>id="detail1"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Specific detail (e.g., $100k, 6 months, New York...)"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="email-input"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>type="text"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>id="detail2"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Another detail (e.g., timeframe, feeling, who...)"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="email-input"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>type="text"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>id="detail3"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>placeholder="One more detail (optional)"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>class="email-input"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="form-label"&gt;How do you want to feel?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;input<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>type="text"</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>id="feelings"</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>placeholder="e.g., Accomplished, excited, grateful..."<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>class="email-input"</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button type="submit" class="cta-button full-width-button"&gt;Join Waitlist&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Manifest Mailbox 2025&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function scrollToWaitlist() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Apps Script URL</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoo_CPhqOIsD6UmbQQBc515I4scbLdqJ2cLnuG6nBPcLBEzSifmVVZAfeFJbYhrmI/exec';</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('waitlistForm').addEventListener('submit', async function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Get form values</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const formData = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>email: document.getElementById('email').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>manifestation: document.getElementById('manifestation').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>detail1: document.getElementById('detail1').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>detail2: document.getElementById('detail2').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>detail3: document.getElementById('detail3').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>feelings: document.getElementById('feelings').value</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Disable button while submitting</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const submitButton = this.querySelector('button[type="submit"]');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitButton.textContent = 'Joining...';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitButton.disabled = true;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Send to Google Apps Script</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const response = await fetch(SCRIPT_URL, {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>method: 'POST',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>mode: 'no-cors',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>headers: {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>'Content-Type': 'application/json',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>body: JSON.stringify(formData)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Show success message</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert('Thank you for joining the waitlist! We will be in touch soon.');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>this.reset();</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert('Thank you for joining! Your submission has been received.');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>this.reset();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Re-enable button</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitButton.textContent = 'Join Waitlist';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitButton.disabled = false;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Manifest Mailbox</h1>
+            <h2>Open your inbox each morning to emails from your future. Written from the reality you're calling in.</h2>
+            <button class="cta-button" onclick="scrollToWaitlist()">Start Manifesting</button>
+        </div>
+    </section>
+
+    <section class="cta-section" id="waitlist">
+        <h2>Start manifesting differently</h2>
+        <p>Set up your manifestation profile and receive your free manifest email</p>
+        
+        <form class="waitlist-form" id="waitlistForm">
+            <input 
+                type="email" 
+                id="email"
+                placeholder="Your email" 
+                class="email-input" 
+                required
+            >
+            
+            <textarea 
+                id="manifestation"
+                placeholder="What are you manifesting? Describe your vision in detail..." 
+                class="manifest-input" 
+                rows="4"
+                required
+            ></textarea>
+            
+            <input 
+                type="text"
+                id="detail1"
+                placeholder="Specific detail (e.g., $100k, 6 months, New York...)" 
+                class="email-input"
+            >
+            
+            <input 
+                type="text"
+                id="detail2"
+                placeholder="Another detail (e.g., timeframe, feeling, who...)" 
+                class="email-input"
+            >
+            
+            <input 
+                type="text"
+                id="detail3"
+                placeholder="One more detail (optional)" 
+                class="email-input"
+            >
+            
+            <div class="form-section">
+                <label class="form-label">How do you want to feel?</label>
+                <input 
+                    type="text"
+                    id="feelings"
+                    placeholder="e.g., Accomplished, excited, grateful..." 
+                    class="email-input"
+                >
+            </div>
+            
+            <button type="submit" class="cta-button full-width-button">Start Manifesting</button>
+            <p class="cta-tagline">Daily Free Manifest Emails</p>
+        </form>
+    </section>
+
+    <section class="how-it-works">
+        <h2 class="section-title">How it works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Describe what you're manifesting</h3>
+                    <p>Share your vision in your own words. Add specific details like timeframes, amounts, or feelings you want to experience.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Receive daily emails from your future</h3>
+                    <p>Each morning, open your inbox to 3-7 personalized messages. Written as if they're already happening.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Read, refine, and return tomorrow</h3>
+                    <p>Mark what feels right. Adjust what doesn't. Your manifestation evolves with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview">
+        <h2 class="section-title">Your inbox, reimagined</h2>
+        <div class="inbox-preview">
+            <div class="inbox-header">Today</div>
+            <div class="email-item">
+                <div class="email-from">Future You</div>
+                <div class="email-subject">Re: The book deal is signed</div>
+                <div class="email-preview">I wanted to share the news - the publishing contract came through. The advance was more than we hoped...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-from">Your Agent</div>
+                <div class="email-subject">Speaking engagement confirmed</div>
+                <div class="email-preview">The keynote is locked in for March. They're excited to have you. Let me know about travel...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-from">Your Business Bank</div>
+                <div class="email-subject">Account summary - January</div>
+                <div class="email-preview">Your current balance reflects the consulting revenue from last month. Q1 is looking strong...</div>
+            </div>
+            <div class="email-item">
+                <div class="email-from">Health Coach</div>
+                <div class="email-subject">Your body is thanking you</div>
+                <div class="email-preview">The consistency is paying off. Your energy levels, your sleep, the way your clothes fit...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="science">
+        <h2 class="section-title">The science of visualization</h2>
+        <div class="science-content">
+            <p class="science-intro">Research shows that mental rehearsal activates the same neural pathways as actual experience. When you vividly imagine your future, your brain begins to treat it as real.</p>
+            <div class="science-grid">
+                <div class="science-item">
+                    <h3>Mental rehearsal works</h3>
+                    <p>Studies demonstrate that athletes who visualize their performance show similar brain activity to those physically practicing. Your mind doesn't distinguish between vivid imagination and reality.</p>
+                </div>
+                <div class="science-item">
+                    <h3>Consistency creates pathways</h3>
+                    <p>Daily visualization strengthens neural connections. The more you rehearse your future mentally, the more your brain recognizes it as familiar and achievable.</p>
+                </div>
+                <div class="science-item">
+                    <h3>Detailed imagery matters</h3>
+                    <p>Research shows specific, sensory-rich visualization is more effective than vague daydreaming. The more detail you imagine, the stronger the neurological impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Designed for daily ritual</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>Minimal by design</h3>
+                <p>No distractions. No gamification. Just a calm, clean space to receive your daily messages.</p>
+            </div>
+            <div class="feature">
+                <h3>Personalized content</h3>
+                <p>Every email is generated based on your specific manifestation. Your goals, your timeline, your reality.</p>
+            </div>
+            <div class="feature">
+                <h3>Evolves with you</h3>
+                <p>Refine your manifestation anytime. The emails adjust to reflect where you are now.</p>
+            </div>
+            <div class="feature">
+                <h3>Daily reminder</h3>
+                <p>A gentle notification each morning. Your inbox is ready when you are.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <button class="cta-button" onclick="scrollToWaitlist()">Start Manifesting</button>
+        </div>
+        <p>Manifest Mailbox 2025</p>
+    </footer>
+
+    <script>
+        function scrollToWaitlist() {
+            document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Apps Script URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoo_CPhqOIsD6UmbQQBc515I4scbLdqJ2cLnuG6nBPcLBEzSifmVVZAfeFJbYhrmI/exec';
+        
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                email: document.getElementById('email').value,
+                manifestation: document.getElementById('manifestation').value,
+                detail1: document.getElementById('detail1').value,
+                detail2: document.getElementById('detail2').value,
+                detail3: document.getElementById('detail3').value,
+                feelings: document.getElementById('feelings').value
+            };
+            
+            // Disable button while submitting
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Joining...';
+            submitButton.disabled = true;
+            
+            try {
+                // Send to Google Apps Script
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Show success message
+                alert('Thank you for joining the waitlist! We will be in touch soon.');
+                this.reset();
+                
+            } catch (error) {
+                alert('Thank you for joining! Your submission has been received.');
+                this.reset();
+            }
+            
+            // Re-enable button
+            submitButton.textContent = 'Start Manifesting';
+            submitButton.disabled = false;
+        });
+    </script>
 </body>
 </html>
